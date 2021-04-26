@@ -15,7 +15,7 @@ before_install:
 
 script:
   - pytest /tests
-  - pytest --cov=adventure_bot tests/
+  - pytest --cov=adventure_bot tests
 
 before_deploy:
   - pyinstaller --onefile bot.py
