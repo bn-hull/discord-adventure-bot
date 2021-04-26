@@ -15,7 +15,7 @@ before_install:
 
 script:
   - python -m unittest discover tests
-  - pyinstaller --onefile main.py
+  - pyinstaller --onefile bot.py
 
 deploy:
   provider: releases
