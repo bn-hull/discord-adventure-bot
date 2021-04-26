@@ -1,3 +1,4 @@
 discord.py
 pyinstaller
-coverage
+pytest
+pytest-cov

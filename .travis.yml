@@ -14,8 +14,8 @@ before_install:
   - pip install -r requirements.txt
 
 script:
-  - coverage run -m unittest discover
-  - coverage report -m
+  - pytest tests/
+  - pytest --cov=adventure_bot tests/
 
 before_deploy:
   - pyinstaller --onefile bot.py
