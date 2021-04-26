@@ -14,7 +14,7 @@ before_install:
   - pip install -r requirements.txt
 
 script:
-  - pytest /tests
+  - pytest
   - pytest --cov=adventure_bot tests
 
 before_deploy:
