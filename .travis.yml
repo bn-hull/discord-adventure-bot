@@ -15,4 +15,4 @@ before_install:
 
 script:
   - python -m unittest discover tests
-  - python main.py
+  - pyinstaller --onefile main.py
