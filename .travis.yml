@@ -16,6 +16,8 @@ before_install:
 script:
   - python -m unittest discover tests
   - coverage run -m unittest discover
+
+before_deploy:
   - pyinstaller --onefile bot.py
 
 deploy:
