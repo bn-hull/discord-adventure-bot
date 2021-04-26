@@ -16,3 +16,11 @@ before_install:
 script:
   - python -m unittest discover tests
   - pyinstaller --onefile main.py
+
+deploy:
+  provider: releases
+  skip_cleanup: true
+  github-token: $GITHUB_TOKEN
+  file: "./dist/bot.exe"
+  on:
+    tags: true
