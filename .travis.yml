@@ -22,5 +22,6 @@ deploy:
   skip_cleanup: true
   github-token: $GITHUB_TOKEN
   file: "./dist/bot.exe"
+  edge: true
   on:
     tags: true
