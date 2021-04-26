@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get install python3 -y
 RUN apt-get install python3-pip -y
 
-# settomg hp,e
+# setting home
 ENV HOME /home
 
 # copying files over
