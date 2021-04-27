@@ -6,7 +6,7 @@ class StoryData:
         self.thing_list = []
 
     def add_story(self, new_story):
-        self.person_list.append(new_story)
+        self.story_list.append(new_story)
 
     def add_person(self, new_person):
         self.person_list.append(new_person)
