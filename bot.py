@@ -1,6 +1,68 @@
-from adventure_bot.app import sample_func
+# setup boilerplate for discord.py
+# these are exodependencies
 
-# Note: to run all tests run script  python -m unittest discover tests
+import os
+import discord
+from discord.ext import commands
+from dotenv import load_dotenv
+from adventure_bot.storage import (
+    transform_story_data_to_json,
+    populate_story_data_from_json,
+)
+from adventure_bot.story_data import StoryData
+from adventure_bot.story_generation import replace_text, StoryGenerator
+
+
+intents = discord.Intents.default()
+intents.members = True
+bot = commands.Bot(command_prefix="!", intents=intents)
+
+json_file_db = open("db.json", "r")
+story_data = populate_story_data_from_json(json_file_db.read())
+json_file_db.close()
+
+
+def overwrite_json(json_file, to_write):
+    with open(json_file, "w") as file_to_write:
+        file_to_write.write(to_write)
+
+
+@bot.command()
+async def add_person(ctx, arg):
+    story_data.add_person(arg)
+    overwrite_json("db.json", transform_story_data_to_json(story_data))
+
+    await ctx.send("Added person: " + arg)
+
+
+@bot.command()
+async def add_place(ctx, arg):
+    story_data.add_place(arg)
+    overwrite_json("db.json", transform_story_data_to_json(story_data))
+
+    await ctx.send("Added place: " + arg)
+
+
+@bot.command()
+async def add_story(ctx, arg):
+    story_data.add_place(arg)
+    overwrite_json("db.json", transform_story_data_to_json(story_data))
+
+    await ctx.send("Added story: " + arg)
+
+
+@bot.command()
+async def add_thing(ctx, arg):
+    story_data.add_place(arg)
+    overwrite_json("db.json", transform_story_data_to_json(story_data))
+
+    await ctx.send("Added thing: " + arg)
+
 
 if __name__ == "__main__":
-    print(sample_func("Ready"))
+    load_dotenv()
+    TOKEN = os.getenv("DISCORD_TOKEN")
+    try:
+        bot.run(TOKEN)
+    except:
+        print("Invalid token. Enter proper token in .env file under DISCORD_TOKEN")
