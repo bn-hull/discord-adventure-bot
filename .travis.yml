@@ -7,8 +7,7 @@ python:
 arch:
   - amd64
 
-services:
-  - docker
+os: windows
 
 before_install:
   - pip install -r requirements.txt
