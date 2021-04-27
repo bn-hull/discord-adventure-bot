@@ -21,6 +21,8 @@ json_file_db = open("db.json", "r")
 story_data = populate_story_data_from_json(json_file_db.read())
 json_file_db.close()
 
+story_generator = StoryGenerator("$PERSON", "$PLACE", "$THING")
+
 
 def overwrite_json(json_file, to_write):
     with open(json_file, "w") as file_to_write:
@@ -57,6 +59,23 @@ async def add_thing(ctx, arg):
     overwrite_json("db.json", transform_story_data_to_json(story_data))
 
     await ctx.send("Added thing: " + arg)
+
+
+@bot.command()
+async def generate_story(ctx):
+    story = ""
+    try:
+        story = story_generator.generate_story(
+            story_data.story_list[0],
+            story_data.person_list,
+            story_data.place_list,
+            story_data.thing_list,
+        )
+    except:
+        await ctx.send("Not enough data")
+        return
+
+    await ctx.send(story)
 
 
 if __name__ == "__main__":
