@@ -16,6 +16,7 @@ script:
 
 before_deploy:
   - pyinstaller --onefile bot.py
+  - ls ./dist
   - cp ./dist/bot.exe bot.exe
 
 deploy:
