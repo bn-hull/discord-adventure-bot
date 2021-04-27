@@ -1,12 +1,20 @@
 from adventure_bot.story_data import StoryData
 
 
+class TestAddStory:
+    def test_add_story(self):
+        state = StoryData()
+
+        state.add_story("A")
+        assert ["A"] == state.story_list
+
+
 class TestAddPerson:
     def test_add_person(self):
         state = StoryData()
 
         state.add_person("A")
-        assert ["A"] == state.people_list
+        assert ["A"] == state.person_list
 
 
 class TestAddPlace:
@@ -14,7 +22,7 @@ class TestAddPlace:
         state = StoryData()
 
         state.add_place("A")
-        assert ["A"] == state.places_list
+        assert ["A"] == state.place_list
 
 
 class TestAddThing:
