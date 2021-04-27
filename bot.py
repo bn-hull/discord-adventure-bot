@@ -11,6 +11,7 @@ from adventure_bot.storage import (
 )
 from adventure_bot.story_data import StoryData
 from adventure_bot.story_generation import replace_text, StoryGenerator
+import random
 
 
 intents = discord.Intents.default()
@@ -66,10 +67,10 @@ async def generate_story(ctx):
     story = ""
     try:
         story = story_generator.generate_story(
-            story_data.story_list[0],
-            story_data.person_list,
-            story_data.place_list,
-            story_data.thing_list,
+            random.shuffle(story_data.story_list)[0],
+            random.shuffle(story_data.person_list),
+            random.shuffle(story_data.place_list),
+            random.shuffle(story_data.thing_list),
         )
     except:
         await ctx.send("Not enough data")
