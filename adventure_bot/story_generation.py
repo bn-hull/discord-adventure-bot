@@ -37,6 +37,15 @@ class StoryGenerator:
         self.thing_key = thing_key
 
     def generate_story(self, story: str, characters: list, places: list, things: list):
+        if len(story) == 0:
+            raise Exception("Story list is empty")
+        if len(characters) == 0:
+            raise Exception("Characters list is empty")
+        if len(places) == 0:
+            raise Exception("Places list is empty")
+        if len(things) == 0:
+            raise Exception("Things list is empty")
+
         story = replace_text(story, self.character_key, characters)
         story = replace_text(story, self.place_key, places)
         story = replace_text(story, self.thing_key, things)
