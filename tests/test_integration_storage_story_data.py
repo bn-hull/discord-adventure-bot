@@ -20,3 +20,13 @@ class TestIntegrationStoryDataStorage:
             transform_story_data_to_json(story_data)
             == '{"story": [], "person": [], "place": [], "thing": []}'
         )
+
+    def test_make_story_from_read_json_string(self):
+        story_data = StoryData()
+        story_data.add_place("Test")
+        assert (
+            populate_story_data_from_json(
+                '{"story": [], "person": [], "place": ["Test"], "thing": []}'
+            )
+            == story_data
+        )
