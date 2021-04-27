@@ -16,3 +16,11 @@ class StoryData:
 
     def add_thing(self, new_thing):
         self.thing_list.append(new_thing)
+
+    def __eq__(self, other):
+        return (
+            self.story_list == other.story_list
+            and self.story_list == other.person_list
+            and self.place_list == other.place_list
+            and self.thing_list == other.thing_list
+        )
