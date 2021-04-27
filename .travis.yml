@@ -17,14 +17,14 @@ script:
 before_deploy:
   - pyinstaller --onefile bot.py
   - ls ./dist
-  - cp ./dist/bot.exe bot.exe
+  - cp ./dist/bot bot
 
 deploy:
   provider: releases
   skip_cleanup: true
   api_key: $GITHUB_TOKEN
   file:
-    - "bot.exe"
+    - "bot"
     - "db.json"
     - ".env"
   edge: true
